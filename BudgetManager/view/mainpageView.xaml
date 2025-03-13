@@ -1,0 +1,35 @@
+﻿<Window x:Class="BudgetManager.view.mainPageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetManager"
+        mc:Ignorable="d"
+        Title="BudgetManager" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label FontSize="48px">Welcome to Budget Manager</Label>
+        
+        <StackPanel Grid.Row="1">
+            <Label FontSize="20">Create a new budget!</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Budget Name</Label>
+                <TextBox Width="200"></TextBox>
+            </StackPanel>
+            <Button Width="75">Create</Button>
+        </StackPanel>
+     
+
+        <StackPanel Grid.Row="3">
+            <Label FontSize="20">Open an existing budget</Label>
+            <TextBox Width="200">Your budget name...</TextBox>
+            <Button Width="75">Open</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

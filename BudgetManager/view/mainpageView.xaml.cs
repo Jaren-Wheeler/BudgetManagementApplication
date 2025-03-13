@@ -9,14 +9,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BudgetManager
+namespace BudgetManager.view
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class mainPageView : Window
     {
-        public MainWindow()
+        public mainPageView()
         {
             InitializeComponent();
         }
