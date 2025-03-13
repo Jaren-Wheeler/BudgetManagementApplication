@@ -21,15 +21,16 @@
                 <Label Name="lblNewBudgetName">Budget Name</Label>
                 <TextBox Name="txtNewBudgetName" Width="200"></TextBox>
             </StackPanel>
-            <Button Name="btnNewBudget" Width="75" Click="Button_Click">Create</Button>
+            <Button Name="btnNewBudget" Width="75" Click="btnNewBudget_Click">Create</Button>
         </StackPanel>
      
 
         <StackPanel Grid.Row="3">
             <Label Name="lblExistingBudget" FontSize="20">Open an existing budget</Label>
-            <TextBox Name="txtExistingBudget" Width="200">Your budget name...</TextBox>
-            <Button Name="btnExistingBudget" Width="75">Open</Button>
+            <TextBox Name="txtExistingBudget" Width="200"></TextBox>
+            <Button Name="btnExistingBudget" Width="75" Click="btnExistingBudget_Click">Open</Button>
         </StackPanel>
-        
+
+        <Frame Name="frmBudgetOverview"></Frame>
     </Grid>
 </Window>

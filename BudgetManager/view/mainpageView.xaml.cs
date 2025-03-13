@@ -21,9 +21,40 @@ namespace BudgetManager.view
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        // handles click event of create new budget button
+        private void btnNewBudget_Click(object sender, RoutedEventArgs e)
         {
+            string newBudgetName = txtNewBudgetName.Text; // user input
+            if (newBudgetName == "")
+            {
+                MessageBox.Show("You must enter a name for your budget.");
+            } 
+            else
+            {
 
+                // hide all existing elements on the page
+                lblTitle.Visibility = Visibility.Collapsed;
+                lblNewBudget.Visibility = Visibility.Collapsed;
+                lblNewBudgetName.Visibility = Visibility.Collapsed;
+                txtNewBudgetName.Visibility = Visibility.Collapsed;
+                btnNewBudget.Visibility = Visibility.Collapsed;
+                lblExistingBudget.Visibility = Visibility.Collapsed;
+                txtExistingBudget.Visibility = Visibility.Collapsed;
+                btnExistingBudget.Visibility = Visibility.Collapsed;
+
+                frmBudgetOverview.Navigate(new budgetOverview()); // open budgetOverview.xaml page
+            }
+           
+        }
+
+        // handles click event of opening existing budget button
+        private void btnExistingBudget_Click(object sender, RoutedEventArgs e)
+        {
+            string existingBudgetName = txtExistingBudget.Text; //user input
+            if (existingBudgetName == "")
+            {
+                MessageBox.Show("You must enter a budget name.");
+            }
         }
     }
 }
