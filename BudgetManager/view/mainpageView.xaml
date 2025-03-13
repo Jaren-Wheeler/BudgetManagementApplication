@@ -13,22 +13,22 @@
             <RowDefinition Height="150"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label FontSize="48px">Welcome to Budget Manager</Label>
+        <Label Name="lblTitle" FontSize="48px">Welcome to Budget Manager</Label>
         
         <StackPanel Grid.Row="1">
-            <Label FontSize="20">Create a new budget!</Label>
+            <Label Name="lblNewBudget" FontSize="20">Create a new budget!</Label>
             <StackPanel Orientation="Horizontal">
-                <Label>Budget Name</Label>
-                <TextBox Width="200"></TextBox>
+                <Label Name="lblNewBudgetName">Budget Name</Label>
+                <TextBox Name="txtNewBudgetName" Width="200"></TextBox>
             </StackPanel>
-            <Button Width="75">Create</Button>
+            <Button Name="btnNewBudget" Width="75" Click="Button_Click">Create</Button>
         </StackPanel>
      
 
         <StackPanel Grid.Row="3">
-            <Label FontSize="20">Open an existing budget</Label>
-            <TextBox Width="200">Your budget name...</TextBox>
-            <Button Width="75">Open</Button>
+            <Label Name="lblExistingBudget" FontSize="20">Open an existing budget</Label>
+            <TextBox Name="txtExistingBudget" Width="200">Your budget name...</TextBox>
+            <Button Name="btnExistingBudget" Width="75">Open</Button>
         </StackPanel>
         
     </Grid>
