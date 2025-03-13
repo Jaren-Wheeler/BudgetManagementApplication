@@ -55,6 +55,21 @@ namespace BudgetManager.view
             {
                 MessageBox.Show("You must enter a budget name.");
             }
+            else
+            {
+
+                // hide all existing elements on the page
+                lblTitle.Visibility = Visibility.Collapsed;
+                lblNewBudget.Visibility = Visibility.Collapsed;
+                lblNewBudgetName.Visibility = Visibility.Collapsed;
+                txtNewBudgetName.Visibility = Visibility.Collapsed;
+                btnNewBudget.Visibility = Visibility.Collapsed;
+                lblExistingBudget.Visibility = Visibility.Collapsed;
+                txtExistingBudget.Visibility = Visibility.Collapsed;
+                btnExistingBudget.Visibility = Visibility.Collapsed;
+
+                frmBudgetOverview.Navigate(new budgetOverview()); // open budgetOverview.xaml page
+            }
         }
     }
 }
