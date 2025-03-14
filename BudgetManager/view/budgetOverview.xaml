@@ -9,6 +9,6 @@
       Title="budgetOverview">
 
     <Grid>
-        <Label Name="lblBudgetTitle">This is your budget</Label>
+        <Label Name="lblBudgetTitle" Content=""></Label>
     </Grid>
 </Page>

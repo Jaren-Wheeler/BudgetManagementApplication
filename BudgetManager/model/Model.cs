@@ -53,7 +53,7 @@ namespace BudgetManager
             }
         }
 
-        //method to inset the budgets
+        //method to insert the budgets
         public void insertBudget(string budgetName)
         {
             using (var connection = new SQLiteConnection($"Data Source={dbFile};Version=3"))
@@ -68,6 +68,41 @@ namespace BudgetManager
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        // method to retrieve existing budget
+        public string retrieveBudget(string input)
+        {
+            string budgetName = null; // initialize budget name
+
+            using (var connection = new SQLiteConnection($"Data Source={dbFile};Version=3"))
+            {
+                connection.Open();
+                string rowCount = "SELECT COUNT(*) FROM Budget WHERE budget_name = @input"; // counts the number of rows matching the budget_name
+
+                using (var command = new SQLiteCommand(rowCount, connection))
+                {
+                    command.Parameters.AddWithValue("@input", input);
+                    long count = (long)command.ExecuteScalar(); // returns count of rows that match the retrieve query
+
+                    // checks if count is > 0 (i.e. that the budget exists). If yes, it queries for the budgetName, otherwise it returns the budget name as null
+                    if (count > 0)
+                    {
+                        string retrieve = "SELECT budget_name FROM Budget WHERE budget_name = @input"; // query for the budget name
+                        using (var retrieveCommand = new SQLiteCommand(retrieve,connection))
+                        {
+                            retrieveCommand.Parameters.AddWithValue("@input", input);
+                            budgetName = (string)retrieveCommand.ExecuteScalar(); // retrieve a single budget from database and store as a string
+                        }
+                    } 
+                    else
+                    {
+                        budgetName = null;
+                    }
+                   
+                }
+            }
+            return budgetName;
         }
     }
 

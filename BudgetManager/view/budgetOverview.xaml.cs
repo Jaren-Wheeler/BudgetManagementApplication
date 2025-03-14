@@ -24,5 +24,13 @@ namespace BudgetManager.view
         {
             InitializeComponent();
         }
+
+        public void displayTitle(string title)
+        {
+            Model db = new Model();
+            string budgetTitle = (string)db.retrieveBudget(title);
+            lblBudgetTitle.Content = budgetTitle;
+
+        }
     }
 }

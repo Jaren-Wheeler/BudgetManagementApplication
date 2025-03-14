@@ -21,12 +21,12 @@ namespace BudgetManager.view
             InitializeComponent();
         }
 
-      
-       
+        // method to handle events when page loads
         public static void mainPageView_Load(object sender, System.EventArgs e)
         {
-              Model db = new Model();
-              db.initalizeDatabase();
+            // create Model object and create the database
+             Model db = new Model();
+             db.initalizeDatabase();
         }
 
         // handles click event of create new budget button
@@ -60,10 +60,20 @@ namespace BudgetManager.view
         // handles click event of opening existing budget button
         private void btnExistingBudget_Click(object sender, RoutedEventArgs e)
         {
+
+            Model db = new Model();
+            budgetOverview budgetDashboard = new budgetOverview();
+
             string existingBudgetName = txtExistingBudget.Text; //user input
+            string title = db.retrieveBudget(existingBudgetName); // grab the budget name from the database
+
             if (existingBudgetName == "")
             {
                 MessageBox.Show("You must enter a budget name.");
+            }
+            else if (title == null)
+            {
+                MessageBox.Show("The inputted budget doesn't exist.");
             }
             else
             {
@@ -78,7 +88,10 @@ namespace BudgetManager.view
                 txtExistingBudget.Visibility = Visibility.Collapsed;
                 btnExistingBudget.Visibility = Visibility.Collapsed;
 
-                frmBudgetOverview.Navigate(new budgetOverview()); // open budgetOverview.xaml page
+                frmBudgetOverview.Navigate(budgetDashboard); // open budgetOverview.xaml page
+
+                budgetDashboard.displayTitle(title); // display the budget title in the top corner
+
             }
         }
     }
