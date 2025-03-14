@@ -32,14 +32,21 @@ namespace BudgetManager.view
         // handles click event of create new budget button
         private void btnNewBudget_Click(object sender, RoutedEventArgs e)
         {
+            Model db = new Model();
+            budgetOverview budgetDashboard = new budgetOverview();
+
             string newBudgetName = txtNewBudgetName.Text; // user input
             if (newBudgetName == "")
             {
                 MessageBox.Show("You must enter a name for your budget.");
             } 
+            else if (!db.insertBudget(newBudgetName))
+            {
+                MessageBox.Show("A budget with that name already exists");
+            }
             else
             {
-                Model db = new Model();
+                
                 db.insertBudget(newBudgetName); // insert the budget in the database with the user's budget name
                 
                 // hide all existing elements on the page

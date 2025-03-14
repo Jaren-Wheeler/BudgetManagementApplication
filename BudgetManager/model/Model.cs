@@ -8,6 +8,7 @@ using System.Data.SQLite;
 using System.Data;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using System.Reflection.Metadata.Ecma335;
 
 namespace BudgetManager
 {
@@ -54,18 +55,32 @@ namespace BudgetManager
         }
 
         //method to insert the budgets
-        public void insertBudget(string budgetName)
+        public bool insertBudget(string budgetName)
         {
             using (var connection = new SQLiteConnection($"Data Source={dbFile};Version=3"))
             {
                 connection.Open();
 
-                string insert = "INSERT INTO Budget (budget_name) VALUES (@budgetName)"; // sql command to insert into budget table.
-
-                using (var command = new SQLiteCommand(insert, connection))
+                string rowCount = "SELECT COUNT(*) FROM Budget WHERE budget_name = @budgetName"; // counts rows matching query to see if budget name exists
+                using (var command = new SQLiteCommand(rowCount, connection))
                 {
-                    command.Parameters.AddWithValue("@budgetName", budgetName); // add budget name from the inputted budget name parameter
-                    command.ExecuteNonQuery();
+                    command.Parameters.AddWithValue("@budgetName", budgetName);
+                    long count = (long)command.ExecuteScalar();
+
+                    if (count == 0)
+                    {
+                        string insert = "INSERT INTO Budget (budget_name) VALUES (@budgetName)"; // sql command to insert into budget table.
+                        using (var insCommand = new SQLiteCommand(insert, connection))
+                        {
+                            insCommand.Parameters.AddWithValue("@budgetName", budgetName); // add budget name from the inputted budget name parameter
+                            insCommand.ExecuteNonQuery();
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
         }
