@@ -21,6 +21,14 @@ namespace BudgetManager.view
             InitializeComponent();
         }
 
+      
+       
+        public static void mainPageView_Load(object sender, System.EventArgs e)
+        {
+              Model db = new Model();
+              db.initalizeDatabase();
+        }
+
         // handles click event of create new budget button
         private void btnNewBudget_Click(object sender, RoutedEventArgs e)
         {
@@ -31,7 +39,9 @@ namespace BudgetManager.view
             } 
             else
             {
-
+                Model db = new Model();
+                db.insertBudget(newBudgetName); // insert the budget in the database with the user's budget name
+                
                 // hide all existing elements on the page
                 lblTitle.Visibility = Visibility.Collapsed;
                 lblNewBudget.Visibility = Visibility.Collapsed;
