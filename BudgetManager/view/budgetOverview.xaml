@@ -5,10 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BudgetManager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="budgetOverview">
 
-    <Grid>
-        <Label Name="lblBudgetTitle" Content=""></Label>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Label Name="lblBudgetTitle" Content="" Width="380" FontSize="30" Margin="10"></Label>
+            <Button Name="btnAddInfo" Content="Add Information" Width="300" Height="30" Margin="10"></Button>
+            <Button Name="btnAddCategory"  Content="Add New Category" Width="300"  Height="30" Margin="10"></Button>
+            <Button Name="btnSaveAll" Content="Save All" Width="300"  Height="30" Margin="10"></Button>
+            <Button Name="btnLogOut" Content="Log Out" Width="300"  Height="30" Margin="10"></Button>
+        </StackPanel>
+        
     </Grid>
 </Page>
