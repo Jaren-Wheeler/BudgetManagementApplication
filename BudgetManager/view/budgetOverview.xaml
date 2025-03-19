@@ -8,13 +8,31 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="budgetOverview">
 
+    <!-- Overview of the main page grid -->
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
+        <!-- Define the columns consisting of nav bar and main section-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Nested grid within page. Adds grid placement to the main section-->
+        <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Nest a second grid inside main section to  split second row into two columns-->
+            <Grid Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="440"></ColumnDefinition>
+                    <ColumnDefinition Width="440"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+        
         <StackPanel Grid.Column="0" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Label Name="lblBudgetTitle" Content="" Width="380" FontSize="30" Margin="10"></Label>
             <Button Name="btnAddInfo" Content="Add Information" Width="300" Height="30" Margin="10"></Button>
