@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BudgetManager.view
+namespace BudgetManager.viewModel
 {
     /// <summary>
     /// Interaction logic for budgetOverview.xaml
@@ -25,11 +25,35 @@ namespace BudgetManager.view
             InitializeComponent();
         }
 
+        // display the title of the budget inputted by the user
         public void displayTitle(string title)
         {
-            Model db = new Model();
-            string budgetTitle = (string)db.retrieveBudget(title);
+            Model db = new Model(); // model object
+            string budgetTitle = (string)db.retrieveBudget(title); // retrieve the title from the retrieveBudget method in the model class
             lblBudgetTitle.Content = budgetTitle;
+        }
+
+        // opens new form for user to input their net income, budget goals, etc.
+        public void btnAddInfo_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        // Adds a new category, opening the category window
+        public void btnAddCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Saves all changes
+        public void btnSaveAll_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Logs user out of their budget
+        public void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

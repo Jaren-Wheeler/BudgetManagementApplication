@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BudgetManager.view
+namespace BudgetManager.viewModel
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -22,7 +22,7 @@ namespace BudgetManager.view
         }
 
         // method to handle events when page loads
-        public static void mainPageView_Load(object sender, System.EventArgs e)
+        public void mainPageView_Load(object sender, System.EventArgs e)
         {
             // create Model object and create the database
              Model db = new Model();
@@ -48,18 +48,8 @@ namespace BudgetManager.view
             {
                 
                 db.insertBudget(newBudgetName); // insert the budget in the database with the user's budget name
-                
-                // hide all existing elements on the page
-                lblTitle.Visibility = Visibility.Collapsed;
-                lblNewBudget.Visibility = Visibility.Collapsed;
-                lblNewBudgetName.Visibility = Visibility.Collapsed;
-                txtNewBudgetName.Visibility = Visibility.Collapsed;
-                btnNewBudget.Visibility = Visibility.Collapsed;
-                lblExistingBudget.Visibility = Visibility.Collapsed;
-                txtExistingBudget.Visibility = Visibility.Collapsed;
-                btnExistingBudget.Visibility = Visibility.Collapsed;
 
-                frmBudgetOverview.Navigate(new budgetOverview()); // open budgetOverview.xaml page
+                txtNewBudgetName.Text = "";
             }
            
         }
