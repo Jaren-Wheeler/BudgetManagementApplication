@@ -119,6 +119,16 @@ namespace BudgetManager
             }
             return budgetName;
         }
+
+        // create a category
+        public void createCategory(string categoryName)
+        {
+            using (var connection = new SQLiteConnection($"Data Source={dbFile};Version=3"))
+            {
+                connection.Open();
+                string insertCategory = "INSERT INTO Category (cat_name) VALUES (@categoryName)"; // query for inserting a category
+            }
+        }
     }
 
 }
