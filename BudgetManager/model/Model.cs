@@ -120,6 +120,13 @@ namespace BudgetManager
             return budgetName;
         }
 
+        // input budget info to the database
+        public void inputInfo()
+        {
+
+        }
+
+
         // create a category
         public void createCategory(string categoryName)
         {
@@ -128,6 +135,24 @@ namespace BudgetManager
                 connection.Open();
                 string insertCategory = "INSERT INTO Category (cat_name) VALUES (@categoryName)"; // query for inserting a category
             }
+        }
+
+        // retrieve info about a category from the database
+        public void retrieveCategory()
+        {
+
+        }
+
+        // input a new item into the database
+        public void createItem()
+        {
+
+        }
+
+        // retrieve info about an item from the database
+        public void retrieveItem()
+        {
+
         }
     }
 

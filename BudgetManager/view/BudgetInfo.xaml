@@ -1,0 +1,27 @@
+﻿<Page x:Class="BudgetManager.viewModel.BudgetInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BudgetManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="800"
+      Title="BudgetInfo">
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Name="lblInfoHeader" Content="Enter some information on your budget"></Label>
+        <StackPanel Grid.Row="1">
+            <Label Name="lblNetIncome" Content="Enter your net income per month"></Label>
+            <TextBox Name="txtNetIncome"></TextBox>
+        </StackPanel>
+
+        <Button Name="btnEnterInfo" Grid.Row="2" Width="100" Height="40">Enter</Button>
+    </Grid>
+</Page>

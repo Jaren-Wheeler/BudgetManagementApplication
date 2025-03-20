@@ -43,6 +43,8 @@
             <Button Name="btnLogOut" Content="Log Out" Width="300"  Height="30" Margin="10" Click="btnLogOut_Click"></Button>
         </StackPanel>
 
+        <Frame Name="frmInformation" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
         <Frame Name="frmCategory" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
+       
     </Grid>
 </Page>

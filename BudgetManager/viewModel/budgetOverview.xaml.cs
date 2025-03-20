@@ -43,7 +43,7 @@ namespace BudgetManager.viewModel
         // opens new form for user to input their net income, budget goals, etc.
         public void btnAddInfo_Click(object sender, RoutedEventArgs e)
         {
-           
+            frmInformation.Navigate(new BudgetInfo());
         }
 
         // Adds a new category, opening the category window
