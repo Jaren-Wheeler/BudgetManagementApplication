@@ -23,6 +23,7 @@ namespace BudgetManager.viewModel
         public budgetOverview()
         {
             InitializeComponent();
+           
         }
 
         // display the title of the budget inputted by the user
@@ -31,6 +32,12 @@ namespace BudgetManager.viewModel
             Model db = new Model(); // model object
             string budgetTitle = (string)db.retrieveBudget(title); // retrieve the title from the retrieveBudget method in the model class
             lblBudgetTitle.Content = budgetTitle;
+        }
+
+        // home button to go back to budget dashboard
+        public void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            frmCategory.Navigate(new budgetOverview());
         }
 
         // opens new form for user to input their net income, budget goals, etc.

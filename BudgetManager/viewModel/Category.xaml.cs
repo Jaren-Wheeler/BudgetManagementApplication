@@ -23,8 +23,10 @@ namespace BudgetManager.viewModel
         public Category()
         {
             InitializeComponent();
+           
         }
-        
-        
+
+      
+
     }
 }
