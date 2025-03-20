@@ -33,7 +33,6 @@ namespace BudgetManager.viewModel
         private void btnNewBudget_Click(object sender, RoutedEventArgs e)
         {
             Model db = new Model();
-            budgetOverview budgetDashboard = new budgetOverview();
 
             string newBudgetName = txtNewBudgetName.Text; // user input
             if (newBudgetName == "")

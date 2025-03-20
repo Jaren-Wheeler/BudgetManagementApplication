@@ -41,6 +41,7 @@
             <Button Name="btnSaveAll" Content="Save All" Width="300"  Height="30" Margin="10" Click="btnSaveAll_Click"></Button>
             <Button Name="btnLogOut" Content="Log Out" Width="300"  Height="30" Margin="10" Click="btnLogOut_Click"></Button>
         </StackPanel>
-        
+
+        <Frame Name="frmCategory" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
     </Grid>
 </Page>

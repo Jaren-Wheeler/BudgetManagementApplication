@@ -42,7 +42,7 @@ namespace BudgetManager.viewModel
         // Adds a new category, opening the category window
         public void btnAddCategory_Click(object sender, RoutedEventArgs e)
         {
-
+            frmCategory.Navigate(new Category());
         }
 
         // Saves all changes
