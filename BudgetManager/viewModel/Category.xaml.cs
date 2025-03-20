@@ -26,7 +26,10 @@ namespace BudgetManager.viewModel
            
         }
 
-      
+        public void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
     }
 }
