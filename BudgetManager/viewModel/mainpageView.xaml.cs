@@ -29,6 +29,11 @@ namespace BudgetManager.viewModel
              db.initalizeDatabase();
         }
 
+        public void hideFrame()
+        {
+            frmBudgetOverview.Visibility = Visibility.Collapsed;
+        }
+
         // handles click event of create new budget button
         private void btnNewBudget_Click(object sender, RoutedEventArgs e)
         {

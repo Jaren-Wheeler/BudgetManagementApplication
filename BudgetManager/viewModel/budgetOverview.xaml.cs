@@ -58,10 +58,10 @@ namespace BudgetManager.viewModel
 
         }
 
-        // Logs user out of their budget
+        // Logs user out of their budget and returns to home page
         public void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Are you sure you want to log out?", "Attention", MessageBoxButton.YesNo);
         }
     }
 }
