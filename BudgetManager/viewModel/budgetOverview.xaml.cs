@@ -42,14 +42,19 @@ namespace BudgetManager.viewModel
         // opens new form for user to input their net income, budget goals, etc.
         public void btnAddInfo_Click(object sender, RoutedEventArgs e)
         {
-            frmInformation.Navigate(new BudgetInfo());
+            removeDashboardView(); // remove items from dashboard if navigating from there
+            frmCategory.Content = null; // set the content of the category page to null if navigating from there
+            frmInformation.Navigate(new BudgetInfo()); // open the information page
         }
 
-        // Adds a new category, opening the category window
+        // Adds a new category, opening the category window. Logic same as add info method
         public void btnAddCategory_Click(object sender, RoutedEventArgs e)
         {
-            frmCategory.Content = null;
+
+            removeDashboardView();
+            frmInformation.Content = null;
             frmCategory.Navigate(new Category());
+
         }
 
         // Saves all changes
@@ -62,6 +67,17 @@ namespace BudgetManager.viewModel
         public void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Are you sure you want to log out?", "Attention", MessageBoxButton.YesNo);
+        }
+
+        // removes elements from the dashboard when a nav bar is clicked.
+        public void removeDashboardView()
+        {
+            lblBudgetInfo.Visibility = Visibility.Collapsed;
+            lblCategoryInfo.Visibility = Visibility.Collapsed;
+            lblGraphicalInfo.Visibility = Visibility.Collapsed;
+            bdBudgetInfo.Visibility = Visibility.Collapsed;
+            bdCategoryInfo.Visibility = Visibility.Collapsed;
+            bdGraphicalInfo.Visibility = Visibility.Collapsed;
         }
     }
 }

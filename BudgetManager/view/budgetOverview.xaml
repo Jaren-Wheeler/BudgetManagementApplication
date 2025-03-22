@@ -32,7 +32,7 @@
             </Grid.RowDefinitions>
 
 
-            <Border Grid.Row="0" BorderBrush="Black" BorderThickness="2" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Border Name="bdBudgetInfo" Grid.Row="0" BorderBrush="Black" BorderThickness="2" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Label Name="lblBudgetInfo" Content="a"></Label>
             </Border>
 
@@ -43,12 +43,12 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0" BorderBrush="Black" BorderThickness="2" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <Label Name="lblBudetInfo" Content="b"></Label>
+                <Border Name="bdCategoryInfo" Grid.Column="0" BorderBrush="Black" BorderThickness="2" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Label Name="lblCategoryInfo" Content="b"></Label>
                 </Border>
 
-                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <Label Name="lblBudgtInfo" Content="c"></Label>
+                <Border Name="bdGraphicalInfo" Grid.Column="1" BorderBrush="Black" BorderThickness="2" Padding="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Label Name="lblGraphicalInfo" Content="c"></Label>
                 </Border>
             </Grid>
             <Frame Name="frmInformation" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
