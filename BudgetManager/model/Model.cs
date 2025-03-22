@@ -146,7 +146,7 @@ namespace BudgetManager
         // input a new item into the database
         public void createItem()
         {
-
+            
         }
 
         // retrieve info about an item from the database

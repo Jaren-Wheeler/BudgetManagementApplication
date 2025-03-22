@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BudgetManager.view;
 
 namespace BudgetManager.viewModel
 {
@@ -64,6 +65,7 @@ namespace BudgetManager.viewModel
 
             Model db = new Model();
             budgetOverview budgetDashboard = new budgetOverview();
+            NavBar navBar = new NavBar();
 
             string existingBudgetName = txtExistingBudget.Text; //user input
             string title = db.retrieveBudget(existingBudgetName); // grab the budget name from the database
@@ -91,7 +93,7 @@ namespace BudgetManager.viewModel
 
                 frmBudgetOverview.Navigate(budgetDashboard); // open budgetOverview.xaml page
 
-                budgetDashboard.displayTitle(title); // display the budget title in the top corner
+                navBar.displayTitle(title); // display the budget title in the top corner
 
             }
         }

@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:BudgetManager"
         mc:Ignorable="d"
         Title="BudgetManager" Height="720" Width="1280"
+   
         Loaded="mainPageView_Load">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="240"></RowDefinition>
             <RowDefinition Height="240"></RowDefinition>
-            <RowDefinition Height="2400"></RowDefinition>
+            <RowDefinition Height="240"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Label Name="lblTitle" FontSize="48px" Grid.Row="0">Welcome to Budget Manager</Label>
