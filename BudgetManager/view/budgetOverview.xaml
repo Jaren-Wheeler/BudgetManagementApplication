@@ -22,7 +22,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <local:NavBar Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" /> <!-- nav bar user control-->
+        <local:NavBar x:Name="NavBarControl" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" /> <!-- nav bar user control-->
         
         <!-- Nested grid within page. Adds grid placement to the main section-->
 

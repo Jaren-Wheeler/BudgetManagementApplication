@@ -25,5 +25,8 @@ namespace BudgetManager.viewModel
             InitializeComponent();
 
         }
+
+        
     }
+
 }

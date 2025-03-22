@@ -65,7 +65,6 @@ namespace BudgetManager.viewModel
 
             Model db = new Model();
             budgetOverview budgetDashboard = new budgetOverview();
-            NavBar navBar = new NavBar();
 
             string existingBudgetName = txtExistingBudget.Text; //user input
             string title = db.retrieveBudget(existingBudgetName); // grab the budget name from the database
@@ -93,7 +92,11 @@ namespace BudgetManager.viewModel
 
                 frmBudgetOverview.Navigate(budgetDashboard); // open budgetOverview.xaml page
 
-                navBar.displayTitle(title); // display the budget title in the top corner
+                // allow budget dashboard to load the nav bar control before displaying the title
+                budgetDashboard.Loaded += (s, args) =>
+                {
+                    budgetDashboard.NavBarControl.displayTitle(title);
+                };
 
             }
         }
