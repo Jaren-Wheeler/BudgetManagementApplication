@@ -28,7 +28,8 @@ namespace BudgetManager
                 // sql command to create the database
                 string createDB = @"CREATE TABLE IF NOT EXISTS Budget (
                                     budget_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    budget_name TEXT NOT NULL
+                                    budget_name TEXT NOT NULL,
+                                    net_income MONEY NOT NULL
                                     );
 
                                     CREATE TABLE IF NOT EXISTS Category (
@@ -65,6 +66,7 @@ namespace BudgetManager
                 using (var command = new SQLiteCommand(rowCount, connection))
                 {
                     command.Parameters.AddWithValue("@budgetName", budgetName);
+                    command.Parameters.AddWithValue("@net_income", 0);
                     long count = (long)command.ExecuteScalar();
 
                     if (count == 0)
@@ -73,6 +75,7 @@ namespace BudgetManager
                         using (var insCommand = new SQLiteCommand(insert, connection))
                         {
                             insCommand.Parameters.AddWithValue("@budgetName", budgetName); // add budget name from the inputted budget name parameter
+                            command.Parameters.AddWithValue("@net_income", 0); // add default value of zero for the net income
                             insCommand.ExecuteNonQuery();
                         }
                         return true;
@@ -122,9 +125,38 @@ namespace BudgetManager
         }
 
         // input budget info to the database
-        public void inputInfo()
+        public bool inputInfo(decimal netIncomeInput, string budgetName)
         {
+           
+            using (var connection = new SQLiteConnection($"Data Source={dbFile};Version=3"))
+            {
+                connection.Open();
+                string rowCount = "SELECT COUNT(*) FROM Budget WHERE budget_name = @budgetName"; // counts the number of rows matching the budget_name
 
+                using (var command = new SQLiteCommand(rowCount, connection))
+                {
+                    command.Parameters.AddWithValue("@budgetName", budgetName);
+                    long count = (long)command.ExecuteScalar(); // returns count of rows that match the retrieve query
+
+                    // checks if count is > 0 (i.e. that the budget exists). If yes, it queries for the budgetName, otherwise it returns the budget name as null
+                    if (count > 0)
+                    {
+                        string updateIncome = "UPDATE Budget SET net_income = @netIncomeInput WHERE budget_name = @budgetName"; // query for updating income amount
+                        using (var retrieveCommand = new SQLiteCommand(updateIncome, connection))
+                        {
+                            retrieveCommand.Parameters.AddWithValue("@budgetName", budgetName);
+                            retrieveCommand.Parameters.AddWithValue("@netIncomeInput", netIncomeInput);
+                            retrieveCommand.ExecuteNonQuery(); 
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
         }
 
 
