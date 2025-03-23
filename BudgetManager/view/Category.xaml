@@ -23,11 +23,9 @@
             <TextBox Name="txtCategoryName"></TextBox>
             <Label Name="lblCategoryAmount" Content="Enter the percentage of your income you would like to allocate"></Label>
             <TextBox Name="txtCategoryAmount"></TextBox>
+            <Button Name="btnCreateCategory" Width="100" Height="40" Click="btnCreateCategory_Click">Create Category</Button>
         </StackPanel>
-        <StackPanel Grid.Row="2">
-            <Label Name="lblAddItem" Content="Start adding spending items"></Label>
-            <Button Name="btnAddItem" Width="100" Height="40">Add Item</Button>
-        </StackPanel>
+     
 
         <Frame Name="frmItemAdd" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
     </Grid>

@@ -109,15 +109,16 @@ namespace BudgetManager
                             retrieveCommand.Parameters.AddWithValue("@input", input);
                             budgetName = (string)retrieveCommand.ExecuteScalar(); // retrieve a single budget from database and store as a string
                         }
+                        return budgetName;
                     } 
                     else
                     {
-                        budgetName = null;
+                        return budgetName;
                     }
                    
                 }
             }
-            return budgetName;
+           
         }
 
         // input budget info to the database
@@ -128,19 +129,66 @@ namespace BudgetManager
 
 
         // create a category
-        public void createCategory(string categoryName)
+        public bool createCategory(string categoryNameInput)
         {
+          
             using (var connection = new SQLiteConnection($"Data Source={dbFile};Version=3"))
             {
                 connection.Open();
-                string insertCategory = "INSERT INTO Category (cat_name) VALUES (@categoryName)"; // query for inserting a category
+                string rowCount = "SELECT COUNT(*) FROM Category WHERE cat_name = @categoryName"; // query to check if category exists already
+                using (var rowCountCmd = new SQLiteCommand(rowCount, connection))
+                {
+                    rowCountCmd.Parameters.AddWithValue("cat_name", categoryNameInput);
+                    long count = (long)rowCountCmd.ExecuteScalar(); // number of rows matching the category name
+
+                    if (count == 0)
+                    {
+                        string insertCategory = "INSERT INTO Category (cat_name) VALUES (@categoryName)"; // query for inserting a category
+                        using (var insertCommand = new SQLiteCommand(insertCategory, connection))
+                        {
+                            insertCommand.Parameters.AddWithValue("@categoryName", categoryNameInput);
+                            insertCommand.ExecuteNonQuery();
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
+     
         }
 
         // retrieve info about a category from the database
-        public void retrieveCategory()
+        public string retrieveCategory(string categoryNameInput)
         {
+            string categoryName = null;
+            using (var connection = new SQLiteConnection($"Data Source={dbFile};Version=3"))
+            {
+                connection.Open();
+                string rowCount = "SELECT COUNT(*) FROM Category WHERE cat_name = @categoryName"; // query to check if category exists already
+                using (var rowCountCmd = new SQLiteCommand(rowCount, connection))
+                {
+                    rowCountCmd.Parameters.AddWithValue("cat_name", categoryNameInput);
+                    long count = (long)rowCountCmd.ExecuteScalar(); // number of rows matching the category name
 
+                    if (count == 0)
+                    {
+                        string insertCategory = "SELECT cat_name FROM Category WHERE cat_name = @categoryName"; // query for inserting a category
+                        using (var insertCommand = new SQLiteCommand(insertCategory, connection))
+                        {
+                            insertCommand.Parameters.AddWithValue("@categoryName", categoryNameInput);
+                            categoryName = (string)insertCommand.ExecuteScalar();
+                        }
+                        return categoryName;
+                    }
+                    else
+                    {
+                        return categoryName;
+                    }
+                }
+            }
         }
 
         // input a new item into the database

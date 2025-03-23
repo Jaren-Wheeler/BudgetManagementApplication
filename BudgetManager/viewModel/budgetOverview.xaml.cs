@@ -15,16 +15,15 @@ using System.Windows.Shapes;
 
 namespace BudgetManager.viewModel
 {
-    /// <summary>
-    /// Interaction logic for budgetOverview.xaml
-    /// </summary>
     public partial class budgetOverview : Page
     {
-       
+        public static budgetOverview CurrentOverviewInstance { get; private set; }
         public budgetOverview()
         {
             InitializeComponent();
-            
+            Model db = new Model(); // call the model
+            CurrentOverviewInstance = this;
+
             NavBarControl.btnHome.Click += btnHome_Click;
             NavBarControl.btnAddInfo.Click += btnAddInfo_Click;
             NavBarControl.btnAddCategory.Click += btnAddCategory_Click;
@@ -32,11 +31,14 @@ namespace BudgetManager.viewModel
             NavBarControl.btnLogOut.Click += btnLogOut_Click;
         }
 
-      
+
         // home button to go back to budget dashboard
         public void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            frmCategory.Navigate(new budgetOverview());
+            if (!(frmCategory.Content is budgetOverview))
+            {
+                frmCategory.Navigate(new budgetOverview());
+            }
         }
 
         // opens new form for user to input their net income, budget goals, etc.
@@ -50,7 +52,6 @@ namespace BudgetManager.viewModel
         // Adds a new category, opening the category window. Logic same as add info method
         public void btnAddCategory_Click(object sender, RoutedEventArgs e)
         {
-
             removeDashboardView();
             frmInformation.Content = null;
             frmCategory.Navigate(new Category());
@@ -79,6 +80,24 @@ namespace BudgetManager.viewModel
             bdCategoryInfo.Visibility = Visibility.Collapsed;
             bdGraphicalInfo.Visibility = Visibility.Collapsed;
         }
+
+
+        // dynamically add a button to the category section of the dashboard
+        public void addCategoryButton(string categoryName)
+        {
+            
+            Button categoryBtn = new Button
+            {
+                Content = categoryName,
+                Width = 100,
+                Height = 40,
+                Margin = new Thickness(10)
+            };
+
+            stckExistingCategoryNav.Children.Add(categoryBtn); // add the button to the home page
+
+        }
+  
     }
 }
 

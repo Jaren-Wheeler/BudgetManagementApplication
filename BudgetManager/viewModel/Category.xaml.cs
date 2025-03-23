@@ -20,15 +20,30 @@ namespace BudgetManager.viewModel
     /// </summary>
     public partial class Category : Page
     {
+        private Model db; // call the model.
         public Category()
         {
             InitializeComponent();
-           
+          
         }
 
-        public void btnAddItem_Click(object sender, RoutedEventArgs e)
+        // create a category button when the user clicks create new category. Show it on the dashboard
+        public void btnCreateCategory_Click(object sender, RoutedEventArgs e)
         {
 
+            // db.createCategory(txtCategoryName.Text); // insert the category into the database
+            budgetOverview dashboard = budgetOverview.CurrentOverviewInstance; // finds current instance of budgetOverview to update
+
+            if (dashboard != null)
+            {
+                dashboard.addCategoryButton(txtCategoryName.Text); // calls method from budgetOverview.xaml.cs
+                dashboard.stckExistingCategoryNav.UpdateLayout();
+                MessageBox.Show("success");
+            }
+            else
+            {
+                MessageBox.Show("error");
+            }
         }
 
     }
